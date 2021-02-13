@@ -1,0 +1,172 @@
+{
+  "project_info": {
+    "project_number": "498575931816",
+    "firebase_url": "https://fir-firestore-85ecb.firebaseio.com",
+    "project_id": "fir-firestore-85ecb",
+    "storage_bucket": "fir-firestore-85ecb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498575931816:android:303e1b768ff71e73ca459d",
+        "android_client_info": {
+          "package_name": "com.monstertechno.chatroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498575931816-hukjagafmt3pna4okhnhccldrmtqg71d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGNeGmyCUaRPPFH0elb7fbEkHAn7TUHMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498575931816-hukjagafmt3pna4okhnhccldrmtqg71d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498575931816:android:2194fb4b979dfc3aca459d",
+        "android_client_info": {
+          "package_name": "com.monstertechno.facebookauthentication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498575931816-s9u979r9ntocirlr0sg0dl9r2sce8aq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.monstertechno.facebookauthentication",
+            "certificate_hash": "a0046579d8cd05f05cd593d2944b80b9c7c1ce59"
+          }
+        },
+        {
+          "client_id": "498575931816-hukjagafmt3pna4okhnhccldrmtqg71d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGNeGmyCUaRPPFH0elb7fbEkHAn7TUHMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498575931816-hukjagafmt3pna4okhnhccldrmtqg71d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498575931816:android:ef5493b7374daac0",
+        "android_client_info": {
+          "package_name": "com.monstertechno.firestoretutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498575931816-1c6npetatc6c50cnu3d6db7fj7b159nu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.monstertechno.firestoretutorial",
+            "certificate_hash": "2b8c2b083e0c6f13ee343a807e3706396b9f3647"
+          }
+        },
+        {
+          "client_id": "498575931816-hukjagafmt3pna4okhnhccldrmtqg71d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGNeGmyCUaRPPFH0elb7fbEkHAn7TUHMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498575931816-hukjagafmt3pna4okhnhccldrmtqg71d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498575931816:android:168e31bad7cc36ecca459d",
+        "android_client_info": {
+          "package_name": "com.monstertechno.notification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498575931816-hukjagafmt3pna4okhnhccldrmtqg71d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGNeGmyCUaRPPFH0elb7fbEkHAn7TUHMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498575931816-hukjagafmt3pna4okhnhccldrmtqg71d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498575931816:android:8fc3563c403d0c19ca459d",
+        "android_client_info": {
+          "package_name": "com.monstertechno.testimage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498575931816-hukjagafmt3pna4okhnhccldrmtqg71d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGNeGmyCUaRPPFH0elb7fbEkHAn7TUHMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498575931816-hukjagafmt3pna4okhnhccldrmtqg71d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
