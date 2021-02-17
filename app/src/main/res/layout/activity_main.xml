@@ -32,6 +32,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"
@@ -56,6 +57,7 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:id="@+id/chat_box"
                 android:layout_width="0dp"
                 android:hint="Start Messaging"
                 android:padding="15dp"
@@ -87,6 +89,7 @@
                 android:background="@drawable/round_ripple"
                 android:padding="5dp"
                 android:scaleType="centerCrop"
+                android:onClick="addMessage"
                 android:src="@drawable/ic_baseline_send_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
