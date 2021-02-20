@@ -1,15 +1,20 @@
 package com.monstertechno.chatroom;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +33,8 @@ import com.google.firebase.firestore.Query;
 import com.monstertechno.chatroom.adapter.ChatAdapter;
 import com.monstertechno.chatroom.cords.FirebaseCords;
 import com.monstertechno.chatroom.model.ChatModel;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -77,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView chat_list;
 
     ChatAdapter chatAdapter;
+
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
             messageObj.put("user_name",user.getDisplayName());
             messageObj.put("timestamp", FieldValue.serverTimestamp());
             messageObj.put("messageID",messageID);
+            messageObj.put("chat_image","");
             messageObj.put("user_image_url",user_image_url);
 
 
@@ -148,6 +158,56 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+        }
+    }
+
+    public void OpenExplorer(View view) {
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                PackageManager.PERMISSION_GRANTED){
+            ChoseImage();
+        }else{
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_EXTERNAL_STORAGE)){
+                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},20);
+            }else {
+                Toast.makeText(this, "Storage permission needed", Toast.LENGTH_SHORT).show();
+                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},20);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 20){
+            if(grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                ChoseImage();
+            }else {
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void ChoseImage() {
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .start(MainActivity.this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            Log.d("TAG", "onActivityResult: "+result);
+            if(resultCode == RESULT_OK){
+                imageUri = result.getUri();
+                Log.d("TAG", "onActivityResult: "+imageUri);
+                startActivity(new Intent(MainActivity.this,ImageUploadPreview.class)
+                .putExtra("image_uri",imageUri.toString()));
+            }else if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
+                Toast.makeText(this, result.getError().getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

@@ -8,16 +8,19 @@ public class ChatModel {
     String user_name;
     String messageID;
     String user_image_url;
+    String chat_image;
     Date timestamp;
+
 
     public ChatModel() {
     }
 
-    public ChatModel(String message, String user_name, String messageID, String user_image_url, Date timestamp) {
+    public ChatModel(String message, String user_name, String messageID, String user_image_url, String chat_image, Date timestamp) {
         this.message = message;
         this.user_name = user_name;
         this.messageID = messageID;
         this.user_image_url = user_image_url;
+        this.chat_image = chat_image;
         this.timestamp = timestamp;
     }
 
@@ -51,6 +54,14 @@ public class ChatModel {
 
     public void setUser_image_url(String user_image_url) {
         this.user_image_url = user_image_url;
+    }
+
+    public String getChat_image() {
+        return chat_image;
+    }
+
+    public void setChat_image(String chat_image) {
+        this.chat_image = chat_image;
     }
 
     public Date getTimestamp() {

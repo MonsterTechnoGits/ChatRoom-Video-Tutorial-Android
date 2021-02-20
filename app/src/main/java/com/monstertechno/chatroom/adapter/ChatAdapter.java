@@ -3,6 +3,7 @@ package com.monstertechno.chatroom.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,15 @@ public class ChatAdapter extends FirestoreRecyclerAdapter<ChatModel, ChatAdapter
         Glide.with(chatViewHolder.user_image.getContext().getApplicationContext())
                 .load(chatModel.getUser_image_url())
                 .into(chatViewHolder.user_image);
+
+        if(!chatModel.getChat_image().equals("")){
+            Glide.with(chatViewHolder.chat_image.getContext().getApplicationContext())
+                    .load(chatModel.getChat_image())
+                    .into(chatViewHolder.chat_image);
+            chatViewHolder.chat_image.setVisibility(View.VISIBLE);
+        }else {
+            chatViewHolder.chat_image.setVisibility(View.GONE);
+        }
     }
 
     @NonNull
@@ -43,11 +53,13 @@ public class ChatAdapter extends FirestoreRecyclerAdapter<ChatModel, ChatAdapter
 
         TextView message;
         CircleImageView user_image;
+        ImageView chat_image;
 
         public ChatViewHolder(@NonNull View itemView) {
             super(itemView);
             message = itemView.findViewById(R.id.message);
             user_image = itemView.findViewById(R.id.user_image);
+            chat_image = itemView.findViewById(R.id.chat_image);
         }
     }
 }
