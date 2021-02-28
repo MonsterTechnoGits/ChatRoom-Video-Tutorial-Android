@@ -17,9 +17,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.monstertechno.chatroom.fcm.SendPushNotification;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -107,11 +109,14 @@ public class ImageUploadPreview extends AppCompatActivity {
         messageObj.put("chat_image",uri.toString());
         messageObj.put("user_image_url",user_image_url);
 
+        String finalMessage = message;
         MAIN_CHAT_DATABASE.document(messageID).set(messageObj).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(ImageUploadPreview.this, "Message Send", Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("global_chat");
+                    SendPushNotification sendPushNotification = new SendPushNotification(ImageUploadPreview.this);
+                    sendPushNotification.startPush(user.getDisplayName(), finalMessage,"global_chat");
                     chat_box.setText("");
                     dialog.dismiss();
                     finish();

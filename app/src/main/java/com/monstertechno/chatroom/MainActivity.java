@@ -30,8 +30,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.monstertechno.chatroom.adapter.ChatAdapter;
 import com.monstertechno.chatroom.cords.FirebaseCords;
+import com.monstertechno.chatroom.fcm.SendPushNotification;
 import com.monstertechno.chatroom.model.ChatModel;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -92,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FirebaseMessaging.getInstance().subscribeToTopic("global_chat");
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -151,7 +155,9 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
-                        Toast.makeText(MainActivity.this, "Message Send", Toast.LENGTH_SHORT).show();
+                        FirebaseMessaging.getInstance().unsubscribeFromTopic("global_chat");
+                        SendPushNotification sendPushNotification = new SendPushNotification(MainActivity.this);
+                        sendPushNotification.startPush(user.getDisplayName(),message,"global_chat");
                         chat_box.setText("");
                     }else {
                         Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
