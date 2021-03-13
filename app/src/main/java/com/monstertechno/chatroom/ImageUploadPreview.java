@@ -104,7 +104,7 @@ public class ImageUploadPreview extends AppCompatActivity {
         HashMap<String,Object> messageObj = new HashMap<>();
         messageObj.put("message",message);
         messageObj.put("user_name",user.getDisplayName());
-        messageObj.put("timestamp", FieldValue.serverTimestamp());
+        messageObj.put("timestamp", new Date().getTime());
         messageObj.put("messageID",messageID);
         messageObj.put("chat_image",uri.toString());
         messageObj.put("user_image_url",user_image_url);

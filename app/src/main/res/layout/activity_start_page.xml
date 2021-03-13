@@ -69,10 +69,11 @@
                     android:orientation="horizontal"
                     android:gravity="center">
                     <TextView
+                        android:id="@+id/notification_count"
                         android:layout_margin="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20"
+                        android:visibility="gone"
                         android:fontFamily="@font/lato_bold"
                         android:textColor="@color/white"
                         android:paddingLeft="8dp"
